@@ -1,0 +1,14 @@
+.SignUp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.SignUp__body {
+    max-width: 80%;
+}
+
+.SignUp__back-btn {
+    padding: 0 15px;
+    margin-bottom: 20px;
+}

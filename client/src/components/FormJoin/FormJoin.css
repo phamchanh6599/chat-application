@@ -1,0 +1,17 @@
+
+.FormJoin__form {
+    padding: 0 15px;
+    margin-bottom: 10px;
+}
+
+.FormJoin__form-submit {
+    padding: 0 15px;
+    margin: 20px 0 10px;
+}
+
+.FormJoin__select {
+    width: 100%;
+    padding: 7px;
+    outline: none;
+}
+

@@ -1,0 +1,26 @@
+.Button {
+    border: 1px solid;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-align: center;
+}
+
+.Button__default {
+    background: #7386ff;
+    color: #fff;
+}
+
+.Button__default:hover {
+    background: #667aff;
+}
+
+.Button__primary {
+    background: #2979FF;
+    color: #FFF;
+}
+
+.Button__primary:hover {
+    background: #1a6eff;
+}

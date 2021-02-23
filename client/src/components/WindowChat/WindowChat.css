@@ -1,0 +1,12 @@
+.WindowChat {
+
+}
+
+.WindowChat__input {
+    display: flex;
+    flex-direction: column;
+    padding: 5px 0;
+    position: sticky;
+    bottom: 0px;
+    margin-top: 40px;
+}

@@ -1,0 +1,26 @@
+.Card {
+    min-width: 400px;
+}
+
+.Card__heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 20px;
+    background: #667aff;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.Card__body {
+    padding: 0px 20px;
+    border: 1px solid #7386ff;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    max-height: 450px;
+    max-width: 400px;
+    overflow-y: scroll;
+    position: relative;
+}

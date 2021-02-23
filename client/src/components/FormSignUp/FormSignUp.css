@@ -1,0 +1,14 @@
+
+.FormSignUp__form {
+    padding: 0 15px;
+}
+
+.FormSignUp__form-submit {
+    padding: 0 15px;
+    margin: 20px 0 10px;
+}
+
+.FormSignUp__message-error {
+    color: red;
+    font-size: 13px;
+}
