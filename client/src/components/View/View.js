@@ -25,6 +25,13 @@ const View = ({ location, history }) => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
 
+  const trackingNavagationBrowser = () => {
+    if (history.action === 'PUSH' || history.action === 'POP') {
+      console.log("PUSH", history.action);
+      // history.push("/")
+    } 
+  }
+
   useEffect(() => {
     const { name, room, limitPeople } = queryString.parse(location.search);
     console.log("NAME", name, room);
@@ -32,6 +39,7 @@ const View = ({ location, history }) => {
 
     setRoom(room);
     setName(name);
+    trackingNavagationBrowser();
 
     socket.emit("join", { name, room, limitPeople }, (error) => {
       if (error) {
@@ -39,7 +47,8 @@ const View = ({ location, history }) => {
         alert(error);
       }
     });
-  }, [location.search]);
+
+  }, [location.search, history]);
 
   useEffect(() => {
     socket.on("message", (message) => {

@@ -3,7 +3,7 @@ const express = require('express');
 const socketio = require('socket.io');
 const cors = require('cors');
 
-const { addUser, removeUser, getUser, getUsersInRoom, getQuantityUsers, deleteUser } = require('./users');
+const { addUser, removeUser, getUser, getUsersInRoom, getQuantityUsers, deleteUser, getListUser } = require('./users');
 
 const index = require('./router/index');
 const roomRouter = require('./router/room');
@@ -21,7 +21,9 @@ app.use(roomRouter);
 io.on('connect', (socket) => {
   socket.on('join', ({ name, room, limitPeople }, callback) => {
     const { error, user } = addUser({ id: socket.id, name, room });
+    console.log("USER", user);
     const isOverLimit = limitPeople < getQuantityUsers();
+    console.log("LIMIT", limitPeople, getQuantityUsers())
     if(error || isOverLimit) {
       deleteUser(socket.id);
       return callback(error || "Room is full");
@@ -38,7 +40,11 @@ io.on('connect', (socket) => {
   });
 
   socket.on('sendMessage', (message, callback) => {
+    const list = getListUser();
     const user = getUser(socket.id);
+    console.log("USER send message", user);
+    console.log("socket ID", socket.id);
+    console.log("list Users", list);
 
     io.to(user.room).emit('message', { user: user.name, text: message });
 

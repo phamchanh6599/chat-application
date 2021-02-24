@@ -17,7 +17,7 @@ const Message = ({ message: { text, user }, name }) => {
     const today = new Date();
     const time = today.getHours() + ":" +  ('0'+ today.getMinutes()).slice(-2);
     return (
-      <span> 
+      <span className="Message__time"> 
         {time}
       </span>
     )
@@ -37,7 +37,7 @@ const Message = ({ message: { text, user }, name }) => {
   const renderMessageLeft = () => {
     return (
       <div className="Message__left">
-        <span className="Message__name">{userName}</span>
+        <span className="Message__name">{userName} {dateTime()} </span>
         <div className="Message__box Message__box-gray">
           <span className="Message__text Message__text-dark">{ReactEmoji.emojify(text)}</span>
         </div>
