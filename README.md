@@ -17,5 +17,5 @@ To install yarn for applicaton
 
 ### `yarn start`
 
-OPEN http://localhost:3000 on client
-OPEN http://localhost:5000 on server
+OPEN http://localhost:3000 on client and http://localhost:5000 on server
+
