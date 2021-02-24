@@ -75,7 +75,11 @@ const FormSignUp = () => {
           id="room"
           value={room || ""}
           placeholder="Room Name"
-          onChange={(event) => setRoom(event.target.value)}
+          onChange={(event) => {
+            const {value} = event.target
+            const room = value.split(" ").join("_");
+            setRoom(room)
+          }}
         />
       </div>
       <div className="FormSignUp__form-submit">
