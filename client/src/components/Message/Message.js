@@ -16,9 +16,13 @@ const Message = ({ message: { text, user, time }, name }) => {
   const renderMessageRight = () => {
     return (
       <div className="Message__right">
-        <span className="Message__name">{trimmedName} {time} </span>
+        <span className="Message__name">
+          {trimmedName} <span className="Message__time">{time} </span>{" "}
+        </span>
         <div className="Message__box Message__box-blue">
-          <span className="Message__text Message__text-white">{ReactEmoji.emojify(text)}</span>
+          <span className="Message__text Message__text-white">
+            {ReactEmoji.emojify(text)}
+          </span>
         </div>
       </div>
     );
@@ -27,9 +31,14 @@ const Message = ({ message: { text, user, time }, name }) => {
   const renderMessageLeft = () => {
     return (
       <div className="Message__left">
-        <span className="Message__name">{userName} {time} </span>
+        <span className="Message__name">
+          {userName}
+          <span className="Message__time">{time} </span>{" "}
+        </span>
         <div className="Message__box Message__box-gray">
-          <span className="Message__text Message__text-dark">{ReactEmoji.emojify(text)}</span>
+          <span className="Message__text Message__text-dark">
+            {ReactEmoji.emojify(text)}
+          </span>
         </div>
       </div>
     );
