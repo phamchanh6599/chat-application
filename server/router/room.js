@@ -5,7 +5,6 @@ const fireStore = firebase.firestore();
 
 router.post("/room", async (req, res) => {
     const { body } = req;
-    console.log("ADD ROOMS")
     try {
         await fireStore.collection("rooms").doc().set(body)
         return res.status(200).send("Successfully adding room");

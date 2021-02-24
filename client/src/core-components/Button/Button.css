@@ -24,3 +24,8 @@
 .Button__primary:hover {
     background: #1a6eff;
 }
+
+.Button__secondary {
+    background: #FFF;
+    color: #2979FF;
+}

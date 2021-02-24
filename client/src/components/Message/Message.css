@@ -25,10 +25,9 @@
 .Message__box {
   display: flex;
   align-items: center;
-  padding: 0 15px;
+  padding: 10px 15px;
   border-radius: 20px;
   max-width: 80%;
-  height: 40px;
   width: auto;
 }
 
@@ -50,4 +49,8 @@
 
 .Message__text-dark {
   color: #353535;
+}
+.Message__time {
+  font-size: 12px;
+  color: gray;
 }

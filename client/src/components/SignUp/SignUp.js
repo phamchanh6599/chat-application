@@ -15,7 +15,7 @@ const SignUp = () => {
           <FormSignUp />
           <div className="SignUp__back-btn"> 
             <Link to={"/"}>
-              <Button variant="primary"> BACK </Button>
+              <Button variant="secondary"> BACK </Button>
             </Link>
           </div>
         </Card>

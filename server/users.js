@@ -26,12 +26,4 @@ const getUser = (id) => users.find((user) => user.id === id);
 
 const getUsersInRoom = (room) => users.filter((user) => user.room === room);
 
-const getQuantityUsers = () => users.length;
-
-const deleteUser = (id) => {
-  const index = users.findIndex((user) => user.id === id);
-  users.splice(1, index);
-}
-
-
-module.exports = { addUser, removeUser, getUser, getUsersInRoom, getQuantityUsers, deleteUser };
+module.exports = { addUser, removeUser, getUser, getUsersInRoom };

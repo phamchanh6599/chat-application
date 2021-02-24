@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import './TextInput.css'
 
-const TextInput = ({ name, placeholder, value, onChange, errors, label, id, defaultValue }) => {
+const TextInput = ({ name, placeholder, value, onChange, errors, label, id, defaultValue, onKeyPress }) => {
 
   return (
     <div className="textinput">
@@ -17,6 +17,7 @@ const TextInput = ({ name, placeholder, value, onChange, errors, label, id, defa
         value={value}
         placeholder={placeholder}
         onChange={onChange}
+        onKeyPress={onKeyPress}
       />
       {errors.message && <span className="textinput__error">{errors.message}</span>}
     </div>
@@ -34,6 +35,7 @@ TextInput.propTypes = {
   label: PropTypes.string,
   defaultValue: PropTypes.string,
   onChange: PropTypes.func,
+  onKeyPress: PropTypes.func
 };
 
 TextInput.defaultProps = {

@@ -11,7 +11,6 @@ const URL = "http://localhost:5000";
 const FormSignUp = () => {
   const [name, setName] = useState("");
   const [room, setRoom] = useState("");
-  const [limitPeople, setLimitPeople] = useState(null);
   const [required, setRequired] = useState("");
 
   const isDuplicateRoom = async (room) => {
@@ -39,7 +38,7 @@ const FormSignUp = () => {
   };
 
   const handleAddRoom = useCallback(async () => {
-    if (!name || !room || !limitPeople) {
+    if (!name || !room) {
       setRequired("Plese fill the form");
       return;
     }
@@ -50,24 +49,21 @@ const FormSignUp = () => {
     try {
       await addRoom(`${URL}/room`, {
         id,
-        name: room,
-        limitPeople,
+        name: room
       });
     } catch (err) {
       console.error("ERROR: ", err);
     } finally {
-      setLimitPeople("")
       setName("")
       setRoom("")
       setRequired("")
     }
-  }, [limitPeople, room, name]);
+  }, [room, name]);
 
   return (
     <div className="FormSignUp">
       <div className="FormSignUp__form">
         <TextInput
-          label="User Name"
           id="userName"
           placeholder="User Name"
           value={name || ""}
@@ -76,26 +72,16 @@ const FormSignUp = () => {
       </div>
       <div className="FormSignUp__form">
         <TextInput
-          label="Room Name"
           id="room"
           value={room || ""}
           placeholder="Room Name"
           onChange={(event) => setRoom(event.target.value)}
         />
       </div>
-      <div className="FormSignUp__form">
-        <TextInput
-          label="Limit People"
-          id="people"
-          value={limitPeople || ""}
-          placeholder="Limit People"
-          onChange={(event) => setLimitPeople(event.target.value)}
-        />
-      </div>
       <div className="FormSignUp__form-submit">
         <Link
-            onClick={(e) => (!name || !room || !limitPeople ? e.preventDefault() : null)}
-            to={`/chat?name=${name}&room=${room}&limitPeople=${limitPeople}`}
+            onClick={(e) => (!name || !room ? e.preventDefault() : null)}
+            to={`/chat?name=${name}&room=${room}`}
           >
           <Button variant="primary" handleFunc={handleAddRoom}>
             New

@@ -6,6 +6,7 @@ import "./View.css";
 
 import WindowChat from "./../WindowChat/WindowChat";
 import Card from "./../../core-components/Card/Card";
+import ViewInformation from "./../ViewInformation/ViewInformation";
 
 const ENDPOINT = "localhost:5000";
 
@@ -26,20 +27,20 @@ const View = ({ location, history }) => {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
-    const { name, room, limitPeople } = queryString.parse(location.search);
-    console.log("NAME", name, room);
+    const { name, room } = queryString.parse(location.search);
     socket = io.connect(ENDPOINT, connectionOptions);
 
     setRoom(room);
     setName(name);
 
-    socket.emit("join", { name, room, limitPeople }, (error) => {
+    socket.emit("join", { name, room }, (error) => {
       if (error) {
         history.push("/");
         alert(error);
       }
     });
-  }, [location.search]);
+
+  }, [location.search, history]);
 
   useEffect(() => {
     socket.on("message", (message) => {
@@ -51,18 +52,29 @@ const View = ({ location, history }) => {
     });
   }, []);
 
+  const dateTime = () => {
+    const today = new Date();
+    const time = today.getHours() + ":" +  ('0'+ today.getMinutes()).slice(-2);
+    return time
+  }
+
   const sendMessage = (event) => {
     event.preventDefault();
 
     if (message) {
-      socket.emit("sendMessage", message, () => setMessage(""));
+      socket.emit("sendMessage", message, dateTime(), () => setMessage(""));
     }
   };
+
+  const LeftRoom = () => {
+    history.push("/")
+    socket.disconnect();
+  }
 
   return (
     <div className="View">
       <div className="View__container">
-        <Card heading="MUMMIM"> 
+        <Card heading="MUMMIM" handleFunc={LeftRoom}>
           <WindowChat
             messages={messages}
             message={message}
@@ -71,6 +83,7 @@ const View = ({ location, history }) => {
             sendMessage={sendMessage}
           />
         </Card>
+        <ViewInformation location={location} users={users} room={room} />
       </div>
     </div>
   );

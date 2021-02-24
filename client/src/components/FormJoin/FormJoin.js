@@ -10,7 +10,6 @@ const FormJoin = () => {
   const [name, setName] = useState("");
   const [rooms, setRooms] = useState([]);
   const [room, setRoom] = useState();
-  const [limitPeople, setLimitPeople] = useState();
 
   useEffect(() => {
     const fetchRooms = async () => {
@@ -19,7 +18,6 @@ const FormJoin = () => {
       setRooms(result);
       if(result.length) {
         setRoom(result[0].name);
-        setLimitPeople(result[0].limitPeople);
       }
     };
     fetchRooms();
@@ -42,16 +40,14 @@ const FormJoin = () => {
             className="FormJoin__select"
             onChange={(event) => {
               const { value } = event.target;
-              const people = rooms.find((x) => x.name === value).limitPeople;
               const room = value.split(" ").join("_");
-              setLimitPeople(people);
               setRoom(room);
             }}
           >
             {rooms.map((x, idx) => {
               return (
                 <option value={x.name} key={idx}>
-                  {x.name} ----- max: {x.limitPeople}
+                  {x.name}
                 </option>
               );
             })}
@@ -60,9 +56,9 @@ const FormJoin = () => {
         <div className="FormJoin__form-submit">
           <Link
             onClick={(e) =>
-              !name || !room || !limitPeople ? e.preventDefault() : null
+              !name || !room  ? e.preventDefault() : null
             }
-            to={`/chat?name=${name}&room=${room}&limitPeople=${limitPeople}`}
+            to={`/chat?name=${name}&room=${room}`}
           >
             <Button variant="primary">JOIN</Button>
           </Link>
