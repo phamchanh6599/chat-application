@@ -10,7 +10,7 @@
 + Main technology: React js - Socket - Firebase - Node js
 
 ## Available Scripts
-In the project directory, you can run:
+In the client and server folder, you can run:
 
 ### `yarn`
 To install yarn for applicaton
