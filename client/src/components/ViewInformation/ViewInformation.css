@@ -1,0 +1,36 @@
+.ViewInformation {
+    margin-left: 30px;
+}
+
+.ViewInformation__room {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.ViewInformation__room-content, .ViewInformation__user-content {
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+}
+
+.ViewInformation__users {
+    display: flex;
+    flex-direction: column;
+}
+
+.ViewInformation__user-title, .ViewInformation__room-title {
+    font-weight: bold;
+}
+
+.ViewInformation__user-item {
+    margin-top: 10px;
+}
+
+.ViewInformation__online-icon {
+    border: 1px solid #2979FF;
+    border-radius: 100%;
+    padding: 0.1px 8px;
+    background: #2979FF;
+    margin-right: 20px;
+}
