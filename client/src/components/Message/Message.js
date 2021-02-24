@@ -4,7 +4,7 @@ import "./Message.css";
 
 import ReactEmoji from "react-emoji";
 
-const Message = ({ message: { text, user }, name }) => {
+const Message = ({ message: { text, user, time }, name }) => {
   let isSentByCurrentUser = false;
   const trimmedName = name.trim().toLowerCase();
   const userName = user.trim().toLowerCase();
@@ -13,20 +13,10 @@ const Message = ({ message: { text, user }, name }) => {
     isSentByCurrentUser = true;
   }
 
-  const dateTime = () => {
-    const today = new Date();
-    const time = today.getHours() + ":" +  ('0'+ today.getMinutes()).slice(-2);
-    return (
-      <span className="Message__time"> 
-        {time}
-      </span>
-    )
-  }
-
   const renderMessageRight = () => {
     return (
       <div className="Message__right">
-        <span className="Message__name">{trimmedName} {dateTime()} </span>
+        <span className="Message__name">{trimmedName} {time} </span>
         <div className="Message__box Message__box-blue">
           <span className="Message__text Message__text-white">{ReactEmoji.emojify(text)}</span>
         </div>
@@ -37,7 +27,7 @@ const Message = ({ message: { text, user }, name }) => {
   const renderMessageLeft = () => {
     return (
       <div className="Message__left">
-        <span className="Message__name">{userName} {dateTime()} </span>
+        <span className="Message__name">{userName} {time} </span>
         <div className="Message__box Message__box-gray">
           <span className="Message__text Message__text-dark">{ReactEmoji.emojify(text)}</span>
         </div>
